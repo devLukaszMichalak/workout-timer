@@ -1,4 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
+import { faGear } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-timer',
@@ -7,22 +8,24 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 })
 export class TimerComponent implements OnInit, OnDestroy {
 
-  seconds: number = 45;
+  resetValue:  number = 45;
+  seconds: number = this.resetValue;
+
+  faGear = faGear;
 
   private intervalId: any;
 
   ngOnInit(): void {
-    this.startTimer(this.seconds);
+    this.startTimer();
   }
 
   resetTimer() {
-    const resetValue = 45;
     if (this.seconds !== 0){
-      this.seconds = resetValue;
+      this.seconds = this.resetValue;
     } else {
-      this.seconds = resetValue;
+      this.seconds = this.resetValue;
       clearInterval(this.intervalId);
-      this.startTimer(resetValue);
+      this.startTimer();
     }
 
   }
@@ -31,7 +34,7 @@ export class TimerComponent implements OnInit, OnDestroy {
     clearInterval(this.intervalId);
   }
 
-  private startTimer(seconds: number): void {
+  private startTimer(): void {
     this.intervalId = setInterval(() => {
       this.seconds -= 1;
       if (this.seconds === 0) {
@@ -41,6 +44,11 @@ export class TimerComponent implements OnInit, OnDestroy {
   }
 
   getTimerValue() {
-    return `--value:${100 / 45 * this.seconds};--size:18rem;`
+    return `--value:${100 / this.resetValue * this.seconds};--size:18rem;`
+  }
+
+  setResetValue(value: any) {
+    this.resetValue = value;
+    this.resetTimer();
   }
 }
