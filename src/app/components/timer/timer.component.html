@@ -11,9 +11,8 @@
   <div class="modal-box">
     <label for="my-modal" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
     <h3 class="font-bold text-lg mb-7">SET TIMER DURATION</h3>
-    <input type="range" min="0" max="90" #newValue [value]="resetValue"  class="range range-primary" step="15" />
+    <input type="range" min="15" max="90" #newValue [value]="resetValue"  class="range range-primary" step="15" />
     <div class="w-full flex justify-between text-xs px-2">
-      <span>0</span>
       <span>15</span>
       <span>30</span>
       <span>45</span>
