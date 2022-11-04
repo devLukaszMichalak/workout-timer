@@ -19,7 +19,7 @@ export class TimerComponent implements OnInit, OnDestroy {
     this.startTimer();
   }
 
-  resetTimer() {
+  resetTimer(): void {
     if (this.seconds !== 0){
       this.seconds = this.resetValue;
     } else {
@@ -36,19 +36,23 @@ export class TimerComponent implements OnInit, OnDestroy {
 
   private startTimer(): void {
     this.intervalId = setInterval(() => {
-      this.seconds -= 1;
+      this.seconds -= 0.025;
       if (this.seconds === 0) {
         clearInterval(this.intervalId);
       }
-    }, 1000);
+    }, 25);
   }
 
-  getTimerValue() {
+  getTimerRingValue(): string {
     return `--value:${100 / this.resetValue * this.seconds};--size:18rem;`
   }
 
-  setResetValue(value: any) {
+  setResetValue(value: any): void {
     this.resetValue = value;
     this.resetTimer();
+  }
+
+  getRoundedSeconds(): number {
+    return Math.floor(this.seconds);
   }
 }
