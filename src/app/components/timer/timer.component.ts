@@ -8,8 +8,8 @@ import { faGear } from '@fortawesome/free-solid-svg-icons';
 })
 export class TimerComponent implements OnInit, OnDestroy {
 
-  resetValue:  number = 45;
-  seconds: number = this.resetValue;
+  resetValue:  number = 45000;
+  milliseconds: number = this.resetValue;
 
   faGear = faGear;
 
@@ -20,10 +20,10 @@ export class TimerComponent implements OnInit, OnDestroy {
   }
 
   resetTimer(): void {
-    if (this.seconds !== 0){
-      this.seconds = this.resetValue;
+    if (this.milliseconds !== 0){
+      this.milliseconds = this.resetValue;
     } else {
-      this.seconds = this.resetValue;
+      this.milliseconds = this.resetValue;
       clearInterval(this.intervalId);
       this.startTimer();
     }
@@ -36,23 +36,23 @@ export class TimerComponent implements OnInit, OnDestroy {
 
   private startTimer(): void {
     this.intervalId = setInterval(() => {
-      this.seconds -= 0.025;
-      if (this.seconds === 0) {
+      this.milliseconds -= 25;
+      if (this.milliseconds === 0) {
         clearInterval(this.intervalId);
       }
     }, 25);
   }
 
   getTimerRingValue(): string {
-    return `--value:${100 / this.resetValue * this.seconds};--size:18rem;`
+    return `--value:${100 / this.resetValue * this.milliseconds};--size:18rem;`
   }
 
   setResetValue(value: any): void {
-    this.resetValue = value;
+    this.resetValue = value * 1000;
     this.resetTimer();
   }
 
   getRoundedSeconds(): number {
-    return Math.floor(this.seconds);
+    return Math.floor(this.milliseconds/1000);
   }
 }
