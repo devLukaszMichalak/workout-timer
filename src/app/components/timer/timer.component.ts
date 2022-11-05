@@ -55,4 +55,8 @@ export class TimerComponent implements OnInit, OnDestroy {
   getRoundedSeconds(): number {
     return Math.floor(this.milliseconds/1000);
   }
+
+  isWindowLandscape() {
+    return window.innerHeight < window.innerWidth;
+  }
 }
