@@ -52,8 +52,8 @@ export class TimerComponent implements OnInit, OnDestroy {
     this.resetTimer();
   }
 
-  getRoundedSeconds(): number {
-    return Math.floor(this.milliseconds/1000);
+  getRoundedSeconds(): string {
+    return `${Math.floor(this.milliseconds/1000)}.${Math.floor((this.milliseconds % 1000)/100)}`;
   }
 
   isWindowLandscape() {

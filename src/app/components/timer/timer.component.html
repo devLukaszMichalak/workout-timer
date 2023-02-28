@@ -1,7 +1,7 @@
 <div class="flex justify-center items-center gap-10 h-full" [ngClass]="isWindowLandscape() ? 'flex-row' : 'flex-col'">
   <label for="my-modal" class="btn"><fa-icon [icon]="faGear"></fa-icon></label>
   <div class="radial-progress bg-primary text-primary-content border-4 border-primary transition duration-200" [ngClass]="milliseconds === 0 ? 'bg-error border-error red-ring-color' : ''" [style]="getTimerRingValue()">
-    <span class="text-4xl transition duration-200" [ngClass]="milliseconds === 0 ? 'btn-error-color' : ''">{{getRoundedSeconds()}}</span>
+    <span class="text-4xl transition duration-200" [ngClass]="milliseconds === 0 ? 'btn-error-color' : ''"><strong>{{getRoundedSeconds()}}</strong></span>
   </div>
   <button (click)="resetTimer()" class="btn btn-primary btn-lg" [ngClass]="milliseconds === 0 ? 'btn-error' : ''">Reset</button>
 </div>
