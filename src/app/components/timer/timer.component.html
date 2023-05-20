@@ -6,6 +6,8 @@
   <button (click)="resetTimer()" class="btn btn-primary btn-lg" [ngClass]="milliseconds === 0 ? 'btn-error' : ''">Reset</button>
 </div>
 
+<audio id="audio" src="assets/sounds/complete.mp3"></audio>
+
 <input type="checkbox" id="my-modal" class="modal-toggle" />
 <div class="modal modal-bottom sm:modal-middle">
   <div class="modal-box">
