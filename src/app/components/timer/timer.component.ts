@@ -8,7 +8,7 @@ import {faGear} from '@fortawesome/free-solid-svg-icons';
 })
 export class TimerComponent implements OnInit, OnDestroy {
 
-  resetValue: number = 4500;
+  resetValue: number = 45000;
   milliseconds: number = this.resetValue;
 
   faGear = faGear;
