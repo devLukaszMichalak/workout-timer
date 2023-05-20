@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, NgZone, OnDestroy, OnInit} from '@angular/core';
 import {faGear} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -8,7 +8,7 @@ import {faGear} from '@fortawesome/free-solid-svg-icons';
 })
 export class TimerComponent implements OnInit, OnDestroy {
 
-  resetValue: number = 45000;
+  resetValue: number = 4500;
   milliseconds: number = this.resetValue;
 
   faGear = faGear;
@@ -63,6 +63,8 @@ export class TimerComponent implements OnInit, OnDestroy {
 
   private playAudio(): void {
     const myAudio = document.getElementById("audio") as HTMLAudioElement;
-    myAudio.play().then();
+    myAudio.play().catch((error) => {
+      console.log(`Unable to play the audio: ${error}`);
+    });
   }
 }
