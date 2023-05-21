@@ -1,5 +1,5 @@
-import {Component, NgZone, OnDestroy, OnInit} from '@angular/core';
-import {faGear} from '@fortawesome/free-solid-svg-icons';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { faGear } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-timer',
