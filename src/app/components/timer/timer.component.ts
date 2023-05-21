@@ -16,10 +16,12 @@ export class TimerComponent implements OnInit, OnDestroy {
   private intervalId: any;
 
   ngOnInit(): void {
+    this.playTickAudio();
     this.startTimer();
   }
 
   resetTimer(): void {
+    this.playTickAudio();
     if (this.milliseconds !== 0) {
       this.milliseconds = this.resetValue;
     } else {
@@ -54,15 +56,22 @@ export class TimerComponent implements OnInit, OnDestroy {
     this.intervalId = setInterval(() => {
       if (this.milliseconds === 0) {
         clearInterval(this.intervalId);
-        this.playAudio();
+        this.playCompleteAudio();
       } else {
         this.milliseconds -= 25;
       }
     }, 25);
   }
 
-  private playAudio(): void {
-    const myAudio = document.getElementById("audio") as HTMLAudioElement;
+  private playCompleteAudio(): void {
+    const myAudio = document.getElementById("audio-complete") as HTMLAudioElement;
+    myAudio.play().catch((error) => {
+      console.log(`Unable to play the audio: ${error}`);
+    });
+  }
+
+  private playTickAudio(): void {
+    const myAudio = document.getElementById("audio-tick") as HTMLAudioElement;
     myAudio.play().catch((error) => {
       console.log(`Unable to play the audio: ${error}`);
     });
