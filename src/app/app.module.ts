@@ -8,11 +8,13 @@ import {FormsModule} from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { ResizeDirective } from './directives/resize.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TimerComponent
+    TimerComponent,
+    ResizeDirective
   ],
   imports: [
     BrowserModule,
